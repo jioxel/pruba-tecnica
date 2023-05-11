@@ -1,22 +1,23 @@
 
-import { User } from "../models/users.model"
+import { User, sortBy } from "../models/users.model"
 
 interface Props{
   users:User[]
   showColor: boolean
   handleDelete:(email:string)=>void
+  handleSort:(sort:sortBy)=>void
 }
 
-export const UserComponent =({users, showColor , handleDelete}:Props)=>{
+export const UserComponent =({users, showColor , handleDelete,handleSort}:Props)=>{
      
      
      return <>
      <table className="table">
       <tr>
-        <th>Photo</th>
-        <th>Name</th>
-        <th>Lastname</th>
-        <th>Country</th>
+        <th >Photo</th>
+        <th onClick={()=>handleSort(sortBy.SORTBYNAME)}>Name</th>
+        <th onClick={()=>handleSort(sortBy.SORTBYLASTNAME)}>Lastname</th>
+        <th onClick={()=>handleSort(sortBy.SORTBYCOUNTRY)}>Country</th>
         <th>Accions</th>
       </tr>
      {

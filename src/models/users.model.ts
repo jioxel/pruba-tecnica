@@ -17,7 +17,12 @@ export interface Root {
      picture: Picture
      nat: string
    }
-   
+   export enum sortBy{
+      NONE = '',
+      SORTBYNAME ='sortByName',
+      SORTBYLASTNAME ='sortByLastname',
+      SORTBYCOUNTRY = 'sortByCountry'
+   }
    export interface Name {
      title: string
      first: string
