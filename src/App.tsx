@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 import {  User, sortBy } from './models/users.model';
 import { UserComponent } from './components/UserComponent';
+import { Button, TextField } from '@mui/material';
 
 function App() {
   const [users, setUsers]=useState<User[]>([]);
@@ -75,11 +76,32 @@ function App() {
  
   return (
     <>
-      <div>
-        <button onClick={()=>setShowColor(!showColor)}>Show Color</button>
-        <button onClick={()=>setSortyBy(sortBy.SORTBYCOUNTRY)}>Sorted by Country</button>
-        <button onClick={handleReset}>Reset</button>
-        <input type="text" value={value} onChange={handleValue}/>
+      <div className='contentActions'>
+        <Button 
+          variant="contained" 
+          size="small" 
+          onClick={()=>setShowColor(!showColor)}>
+            Show Color
+        </Button>
+        <Button 
+          variant="contained" 
+          size="small"
+          onClick={()=>setSortyBy(sortBy.SORTBYCOUNTRY)}>
+            Sorted by Country
+        </Button>
+        <Button 
+          variant="contained" 
+          size="small"
+          onClick={handleReset}>
+            Reset
+          </Button>
+        <TextField  
+        type="text" 
+        variant="standard"
+        label="Search country"
+        value={value} 
+
+        onChange={handleValue}/>
       </div>
       {/* {console.log(originalUsers)} */}
       <UserComponent handleDelete={handleDelete} handleSort={handleSort} showColor={showColor} users={sorted}/>
